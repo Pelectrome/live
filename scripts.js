@@ -8,7 +8,17 @@ if ('serviceWorker' in navigator) {
             console.error('Service Worker registration failed:', error);
         });
 }
-
+// Function to send a notification request to the service worker
+function sendNotificationToServiceWorker(current_ticket, office_number) {
+    if (navigator.serviceWorker.controller) {
+        navigator.serviceWorker.controller.postMessage({
+            type: 'SHOW_NOTIFICATION',
+            title: 'New Ticket Update',
+            body: `Ticket: ${current_ticket}, Office: ${office_number}`,
+            icon: 'static/icons/logo.png'
+        });
+    }
+}
 // Check if the notification permission has been granted
 if (Notification.permission !== 'granted') {
     // Request permission from the user
@@ -130,15 +140,8 @@ function openPopup(current_ticket, office_number) {
     audioPlayer.play();
 
     // Trigger notification from Service Worker
-    if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.ready.then(function(registration) {
-            registration.showNotification("New Ticket Update", {
-                body: `Ticket: ${current_ticket}, Office: ${office_number}`,
-                icon: "static/icons/logo.png", // Replace with your icon URL
-                requireInteraction: true, // Keeps the notification visible until the user interacts
-            });
-        });
-    }
+    sendNotificationToServiceWorker(jsonObject.current_ticket, jsonObject.office_number);
+
 }
 
 // Function to close the popup and remove the background blur
