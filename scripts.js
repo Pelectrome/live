@@ -161,7 +161,7 @@
             if (Notification.permission === 'granted') {
                 const notification = new Notification("New Ticket Update", {
                     body: `Ticket: ${current_ticket}, Office: ${office_number}`,
-                    icon: "/static/icons/logo.png", // Replace with your icon URL
+                    icon: "static/icons/logo.png", // Replace with your icon URL
                     requireInteraction: true, // Keeps the notification visible until the user interacts
                 });
         
