@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ticket Numbers</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/mqtt/dist/mqtt.min.js"></script>
+
+</head>
+<body>
+    <audio  id="audioPlayer">
+        <source src="/static/audio/call-to-attention.mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+      </audio>
+    <header>
+        <h1>Dz Inventors</h1>
+        <img src="/static/icons/logo.png" alt="Logo" class="logo">
+    </header>
+    <div class="content">
+        <div class="list-container">
+            <div class="list-titel">
+                <img src="/static/icons/list-icon.svg" alt="list_icon" class="list-logo">
+                <div class="list-titel-text">Current Tickets</div>
+            </div>
+            <ul>
+                <li>
+                    <img src="/static/icons/person.svg" alt="Office 1 Logo" class="person-logo">
+                    <div class="ticket-number"> </div>
+                    <span class="ticket-office">
+                        <div class="office-number">1</div>
+                        <img src="/static/icons/ticket_office.svg" alt="Office 1 Logo" class="office-logo"> 
+                    </span>
+                </li>
+                <li>
+                    <img src="/static/icons/person.svg" alt="Office 1 Logo" class="person-logo"> 
+                    <div class="ticket-number"> </div>
+                    <span class="ticket-office">
+                        <div class="office-number">2</div>
+                        <img src="/static/icons/ticket_office.svg" alt="Office 2 Logo" class="office-logo">  
+                    </span>
+                </li>
+                <li>
+                    <img src="/static/icons/person.svg" alt="Office 1 Logo" class="person-logo">
+                    <div class="ticket-number"> </div>
+                    <span class="ticket-office">
+                    <div class="office-number">3</div>
+                    <img src="/static/icons/ticket_office.svg" alt="Office 3 Logo" class="office-logo">  
+                    </span>
+                </li>
+                <li>
+                    <img src="/static/icons/person.svg" alt="Office 1 Logo" class="person-logo"> 
+                    <div class="ticket-number"> </div>
+                    <span class="ticket-office">
+                    <div class="office-number">4</div>
+                    <img src="/static/icons/ticket_office.svg" alt="Office 4 Logo" class="office-logo">  
+                    </span>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Popup Overlay and Window -->
+    <div class="popup-overlay">
+        <div class="popup-window">
+            <h2 id="popup-title">Popup Title</h2> <!-- Added Title -->
+            <div id="popup-content">
+                
+                <img src="/static/icons/person.svg" alt="Office 1 Logo" class="person-logo-popup">
+                <div class="ticket-number-popup"> </div>
+                <span class="ticket-office-popup">
+                    <div class="office-number-popup">1</div>
+                    <img src="/static/icons/ticket_office.svg" alt="Office 1 Logo" class="office-logo-popup"> 
+                </span> 
+            
+            </div>
+        </div>
+    </div>
+
+    <script src="scripts.js"></script>
+</body>
+</html>

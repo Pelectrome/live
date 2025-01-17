@@ -1,0 +1,235 @@
+* {
+    user-select: none; /* Standard browsers */
+    -webkit-user-select: none; /* For Safari/Chrome */
+    -ms-user-select: none; /* For older Microsoft Edge */
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100vh; /* Full viewport height */
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #343a40;
+    color: white;
+    font-size: 3.5vw;
+    padding-left: 3vw;
+    padding-right: 3vw;
+    padding-top: 1vw;
+    padding-bottom: 1vw;
+}
+
+.logo {
+    max-width: 12vw;
+    height: auto;
+}
+
+.content {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 2%;
+    flex: 1; 
+    gap: 20px;
+}
+
+.list-container {
+    flex: 1;
+    background: linear-gradient(0deg, #fcfcfc, #f1f1f1);
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding-left: 1%;
+    padding-right: 1%;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    
+}
+
+.list-titel{
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   margin-bottom: 10vw;
+   margin-top: 3vw;
+
+}
+.list-logo{
+   width: 9vw;
+}
+.list-titel-text{
+    text-align: center;
+    font-size: 6vw;
+    color: #343a40;
+    font-weight: bold;
+    padding-left: 10px;
+}
+.person-logo{
+    width: 7vw;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 2.5vw;
+}
+
+li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    background-color: #fff;
+    color: #343a40;
+    font-weight: bold;
+}
+
+li:first-child {
+    font-size: 3vw;
+    color: #28a745;
+    border-left: 5px solid #28a745;
+}
+
+li i {
+    font-size: 2vw;
+    color: #343a40;
+}
+
+.ticket-office {
+    font-size: 2vw;
+    color: #000000;
+    font-weight: normal;
+    margin-left: 15px;
+    display: inline-flex;
+    align-items: center;
+}
+
+.ticket-office .office-logo {
+    width: 10vw;
+    margin-right: 8px;
+    object-fit: contain;
+    padding-left: 20%;
+    padding-right: 20%;
+}
+.ticket-number{
+    font-size: 9vw;
+    font-weight: bold;
+}
+.office-number{
+    font-size: 7vw;
+    font-weight: bold;
+}
+
+.ticket-office {
+    background-color: #f7f7f7;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    border-radius: 5px;
+    padding-left: 2%;
+    padding-right: 2%;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+
+/* Popup Overlay */
+.popup-overlay {
+    position: fixed;
+    display: flex;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    /* Adjust as needed */
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    backdrop-filter: blur(8px);
+    visibility: visible;
+    opacity: 0;
+    transition: opacity 0.2s ease; 
+    pointer-events: none; /* Allow interaction initially */
+}
+
+/* Popup Window */
+.popup-window {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #fff;
+    padding-top: 0;
+    padding-bottom: 30px;
+    padding-left: 0px;
+    padding-right: 0px;
+    border-radius: 25px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    width: 80vw;
+    text-align: center;
+    position: relative;
+}
+
+
+/* Title Style */
+#popup-title {
+    font-size: 8vw;
+    margin-top: 0px;
+    padding-top: 10px;
+    padding-bottom: 5px;
+    color: #ffffff;
+    background-color: #4a5b75;
+    /* background-color: #23395b; */
+    border-radius: 25px 25px 0px 0px;
+    text-align: center;
+}
+
+/* Popup Content Styles */
+#popup-content {
+    font-size: 5vw;
+    color: #23395b;
+}
+
+.person-logo-popup{
+    width: 12vw;
+}
+
+.office-logo-popup {
+    width: 16vw;
+    padding-left: 20%;
+}
+.ticket-number-popup{
+    font-size: 16vw;
+    font-weight: bold;
+}
+.office-number-popup{
+    font-size: 12vw;
+    font-weight: bold;
+}
+
+.ticket-office-popup {
+    color: #000000;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28vw;
+    background-color: #f7f7f7;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    padding-left: 3%;
+    padding-right: 3%;
+    border-radius: 5px;
+    margin-top: 5vw;
+    padding-top: 2vw;
+    padding-bottom: 2vw;
+
+}
+
+
