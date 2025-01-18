@@ -128,8 +128,8 @@ function publishMessage(msg) {
     if (msg) {
         // Add debug log to check if it's being called multiple times
         console.log("Publishing message: ", msg);
-
-        client.publish(topicPub, msg, { qos: 0 }, (err) => {
+        // client.publish(topicPub, msg, { qos: 0 }, (err) => {
+        client.publish(topicPub, msg, (err) => {
             if (err) {
                 logMessage('Publish error: ' + err.message);
             } else {
