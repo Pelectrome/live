@@ -64,10 +64,10 @@ client.on('connect', () => {
             logMessage('Subscription error: ' + err.message);
         } else {
             logMessage('Subscribed to topic: ' + load_page_topicSub);
-            publishMessage('load_page');
         }
     });
 });
+
 
 // Handle incoming messages
 client.on('message', (topic, message) => {
