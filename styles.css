@@ -72,7 +72,7 @@ header {
     background: none; /* No background */
     right: 4vw;
     padding: 0.5vw;
-    margin-left: 22vw;
+    margin-left: 23vw;
     outline: none; /* Remove focus outline */
     -webkit-tap-highlight-color: transparent; /* Remove mobile tap effect */
   }
