@@ -71,8 +71,10 @@ header {
     justify-content: center;
     background: none; /* No background */
     right: 4vw;
-    padding: 5px;
+    padding: 0.5vw;
     margin-left: 20vw;
+    outline: none; /* Remove focus outline */
+    -webkit-tap-highlight-color: transparent; /* Remove mobile tap effect */
   }
   .mute-button img {
     width: 10vw; /* Set the size of the icon */
