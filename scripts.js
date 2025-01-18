@@ -164,6 +164,8 @@ function updateList(list) {
         listContainer.appendChild(newListItem);
     });
 }
+let timeoutId; // Declare a variable to track the timeout
+
 // Function to open the popup and trigger notification
 function openPopup(current_ticket, office_number) {
     // Update the popup content
@@ -174,6 +176,10 @@ function openPopup(current_ticket, office_number) {
     const popupTitle = document.getElementById("popup-title");
     popupTitle.textContent = "Attention";
 
+       // Clear the previous timeout if it exists
+       if (timeoutId) {
+        clearTimeout(timeoutId);
+    }
 
     setTimeout(closePopup, 5000);
     if(muted == true){
