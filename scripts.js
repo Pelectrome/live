@@ -35,12 +35,22 @@
 //     console.log('Notification permission already granted.');
 // }
 
+// Show loading animation
+function showLoading() {
+    document.getElementById("loading-animation").style.display = 'flex';
+}
+
+// Hide loading animation
+function hideLoading() {
+    document.getElementById("loading-animation").style.display = 'none';
+}
+
 // MQTT Configuration
 const brokerUrl = 'wss://22f036df50984390b36ae0d50c4bcf9d.s1.eu.hivemq.cloud:8884/mqtt';
 const username = 'pelectrome';
 const password = 'Snb19951717';
 const topicSub = 'kiosk';
-const load_page_topicSub = 'kiosk_lp';
+const lp_topicSub = 'kiosk_lp';
 const topicPub = 'kiosk_cmd';
 
 // Connect to the broker
@@ -53,7 +63,7 @@ const client = mqtt.connect(brokerUrl, {
 client.on('connect', () => {
     logMessage('Connected to broker');
     // Subscribing to multiple topics at once
-    client.subscribe([topicSub, load_page_topicSub], (err, granted) => {
+    client.subscribe([topicSub, lp_topicSub], (err, granted) => {
         if (err) {
             logMessage('Subscription error: ' + err.message);
         } else {
@@ -61,17 +71,17 @@ client.on('connect', () => {
             publishMessage('load_page');
         }
     });
-
-
 });
 
 
 // Handle incoming messages
 client.on('message', (topic, message) => {
-    if(topic == load_page_topicSub)
+    if(topic == lp_topicSub)
     {
         logMessage(`Message received on ${topic}: ${message.toString()}`);
         const jsonObject = JSON.parse(message.toString());
+        
+        hideLoading();
         updateList(jsonObject.list);  // Update the list with the received data
 
     }
