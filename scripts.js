@@ -40,6 +40,8 @@ const brokerUrl = 'wss://22f036df50984390b36ae0d50c4bcf9d.s1.eu.hivemq.cloud:888
 const username = 'pelectrome';
 const password = 'Snb19951717';
 const topicSub = 'kiosk';
+const load_page_topicSub = 'kioskLoad_page';
+
 const topicPub = 'kiosk_cmd';
 
 // Connect to the broker
@@ -56,6 +58,13 @@ client.on('connect', () => {
             logMessage('Subscription error: ' + err.message);
         } else {
             logMessage('Subscribed to topic: ' + topicSub);
+        }
+    });
+    client.subscribe(load_page_topicSub, (err) => {
+        if (err) {
+            logMessage('Subscription error: ' + err.message);
+        } else {
+            logMessage('Subscribed to topic: ' + load_page_topicSub);
             publishMessage('load_page');
         }
     });
@@ -63,10 +72,21 @@ client.on('connect', () => {
 
 // Handle incoming messages
 client.on('message', (topic, message) => {
-    logMessage(`Message received on ${topic}: ${message.toString()}`);
-    const jsonObject = JSON.parse(message.toString());
-    updateList(jsonObject.list);  // Update the list with the received data
-    openPopup(jsonObject.list[0].current_ticket, jsonObject.list[0].office_number);
+    if(topic == load_page_topicSub)
+    {
+        logMessage(`Message received on ${topic}: ${message.toString()}`);
+        const jsonObject = JSON.parse(message.toString());
+        updateList(jsonObject.list);  // Update the list with the received data
+
+    }
+    else if(topic == topicSub)
+    {
+        logMessage(`Message received on ${topic}: ${message.toString()}`);
+        const jsonObject = JSON.parse(message.toString());
+        updateList(jsonObject.list);  // Update the list with the received data
+        openPopup(jsonObject.list[0].current_ticket, jsonObject.list[0].office_number);
+    }
+
 });
 
 // Handle errors
