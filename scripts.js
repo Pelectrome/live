@@ -40,8 +40,7 @@ const brokerUrl = 'wss://22f036df50984390b36ae0d50c4bcf9d.s1.eu.hivemq.cloud:888
 const username = 'pelectrome';
 const password = 'Snb19951717';
 const topicSub = 'kiosk';
-const load_page_topicSub = 'kioskLoad_page';
-
+const load_page_topicSub = 'kiosk_lp';
 const topicPub = 'kiosk_cmd';
 
 // Connect to the broker
