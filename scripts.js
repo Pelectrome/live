@@ -106,11 +106,11 @@ function updateList(list) {
 
         const newListItem = document.createElement("li");
         newListItem.innerHTML = `
-            <img src="/static/icons/person.svg" alt="Person Logo" class="person-logo">
+            <img src="static/icons/person.svg" alt="Person Logo" class="person-logo">
             <div class="ticket-number">${ticketText}</div>
             <span class="ticket-office">
                 <div class="office-number">${ticket.office_number}</div>
-                <img src="/static/icons/ticket_office.svg" alt="Office Logo" class="office-logo">
+                <img src="static/icons/ticket_office.svg" alt="Office Logo" class="office-logo">
             </span>
         `;
         listContainer.appendChild(newListItem);
