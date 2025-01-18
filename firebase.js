@@ -17,46 +17,41 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 
-/// Function to fetch and display ticket data from Firebase
+// Function to fetch and display ticket data from Firebase
 function fetchTicketListFromFirebase() {
-    const listContainer = document.querySelector(".list-container ul");
+    const listContainer = document.querySelector(".list-container ul"); // Assuming the HTML contains a container like <div class="list-container"><ul></ul></div>
 
-    // Reference to tickets data in Firebase
-    const ticketsRef = ref(database, "tickets");
+    // Reference to the 'list' data in Firebase
+    const listRef = ref(database, "list");
 
     // Listen for changes in the database
-    onValue(ticketsRef, (snapshot) => {
-        const tickets = snapshot.val();
+    onValue(listRef, (snapshot) => {
+        const listData = snapshot.val();
 
         // Clear the existing list items before adding new ones
         listContainer.innerHTML = '';
 
-        // If there are tickets in the database
-        if (tickets) {
-            // Get an array of ticket objects and sort them by the 'id' field
-            const sortedTickets = Object.keys(tickets)
-                .map(ticketKey => tickets[ticketKey])
-                .sort((a, b) => a.id - b.id); // Sorting based on the 'id' field
-
-            // Iterate through the sorted tickets and create list items
-            sortedTickets.forEach(ticket => {
+        // Check if the list data exists
+        if (listData) {
+            // Iterate through the array of objects in 'list'
+            listData.forEach(item => {
                 const listItem = document.createElement("li");
                 listItem.innerHTML = `
                     <img src="static/icons/person.svg" alt="Person Logo" class="person-logo">
-                    <div class="ticket-number">${ticket.current_ticket}</div>
+                    <div class="ticket-number">${item.current_ticket}</div>
                     <span class="ticket-office">
-                        <div class="office-number">${ticket.office_number}</div>
+                        <div class="office-number">${item.office_number}</div>
                         <img src="static/icons/ticket_office.svg" alt="Office Logo" class="office-logo">
                     </span>
                 `;
                 listContainer.appendChild(listItem);
             });
         } else {
+            // If no list data is available, display a message
             listContainer.innerHTML = `<li>No tickets available.</li>`;
         }
     });
 }
 
-// Call the function to fetch tickets
+// Call the function to fetch and display tickets
 fetchTicketListFromFirebase();
-
