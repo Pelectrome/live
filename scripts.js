@@ -84,22 +84,18 @@ const client = mqtt.connect(brokerUrl, {
 // Handle connection
 client.on('connect', () => {
     logMessage('Connected to broker');
-    let subscribeState = false;
+    const topics = [topicSub, lp_topicSub];
     // Subscribing to multiple topics at once
-    client.subscribe([topicSub, lp_topicSub], (err, granted) => {
+    client.subscribe(topics, (err, granted) => {
         if (err) {
             logMessage('Subscription error: ' + err.message);
         } else {
             logMessage('Subscribed to topics: ' + granted.map(grant => grant.topic).join(', '));
-            subscribeState = true;
+            console.log('calling')
+            publishMessage('load_page')
         }
     });
-    if(subscribeState == true)
-    {
-        publishMessage('load_page');
-    }
 });
-
 
 // Handle incoming messages
 client.on('message', (topic, message) => {
@@ -130,7 +126,10 @@ client.on('error', (err) => {
 // Publish a message
 function publishMessage(msg) {
     if (msg) {
-        client.publish(topicPub, msg, (err) => {
+        // Add debug log to check if it's being called multiple times
+        console.log("Publishing message: ", msg);
+
+        client.publish(topicPub, msg, { qos: 0 }, (err) => {
             if (err) {
                 logMessage('Publish error: ' + err.message);
             } else {
