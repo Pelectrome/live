@@ -84,15 +84,20 @@ const client = mqtt.connect(brokerUrl, {
 // Handle connection
 client.on('connect', () => {
     logMessage('Connected to broker');
+    let subscribeState = false;
     // Subscribing to multiple topics at once
     client.subscribe([topicSub, lp_topicSub], (err, granted) => {
         if (err) {
             logMessage('Subscription error: ' + err.message);
         } else {
             logMessage('Subscribed to topics: ' + granted.map(grant => grant.topic).join(', '));
-            publishMessage('load_page');
+            subscribeState = true;
         }
     });
+    if(subscribeState == true)
+    {
+        publishMessage('load_page');
+    }
 });
 
 
