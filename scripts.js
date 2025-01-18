@@ -181,7 +181,7 @@ function openPopup(current_ticket, office_number) {
         clearTimeout(timeoutId);
     }
 
-    setTimeout(closePopup, 5000);
+    timeoutId = setTimeout(closePopup, 5000);
     if(muted == true){
         const audioPlayer = document.getElementById("audioPlayer");
         audioPlayer.play();
