@@ -52,14 +52,34 @@ header {
     
 }
 
+
 .list-titel{
    display: flex;
    align-items: center;
    justify-content: center;
    margin-bottom: 10vw;
    margin-top: 3vw;
+   text-align: center; /* Center content inside */
 
 }
+.mute-button {
+    position: absolute;
+    cursor: pointer;
+    border-radius: 50%;
+    border: 2px solid rgb(199, 199, 199); 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none; /* No background */
+    right: 4vw;
+    padding: 5px;
+    
+  }
+  .mute-button img {
+    width: 10vw; /* Set the size of the icon */
+    height: 10vw; /* Set the size of the icon */
+  }
+
 .list-logo{
    width: 9vw;
 }

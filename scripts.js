@@ -35,6 +35,7 @@
 //     console.log('Notification permission already granted.');
 // }
 
+let muted = false;
 let wakeLock = null;
 
 async function requestWakeLock() {
@@ -175,8 +176,11 @@ function openPopup(current_ticket, office_number) {
 
 
     setTimeout(closePopup, 5000);
-    const audioPlayer = document.getElementById("audioPlayer");
-    audioPlayer.play();
+    if(muted == true){
+        const audioPlayer = document.getElementById("audioPlayer");
+        audioPlayer.play();
+    }
+
 
     // Trigger notification from Service Worker
     // sendNotificationToServiceWorker(jsonObject.current_ticket, jsonObject.office_number);
@@ -188,3 +192,17 @@ function closePopup() {
     document.querySelector(".popup-overlay").style.opacity = "0";
     document.querySelector(".popup-overlay").style.pointerEvents = "none";
 }
+
+const muteButton = document.getElementById('muteButton');
+    muteButton.addEventListener('click', () => {
+      // Check the current state of the button by its file source
+      if (muted) {
+        muteButton.querySelector('img').src = 'static/icons/sound-muted.svg'; // Update the icon to mute
+        muted = false;
+        console.log(muted);
+      } else {
+        muteButton.querySelector('img').src = 'static/icons/sound-unmuted.svg'; // Update the icon to unmute
+        muted = true;
+        console.log(muted);
+      }
+    });
