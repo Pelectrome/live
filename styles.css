@@ -72,7 +72,7 @@ header {
     background: none; /* No background */
     right: 4vw;
     padding: 5px;
-    
+    margin-left: 20vw;
   }
   .mute-button img {
     width: 10vw; /* Set the size of the icon */
