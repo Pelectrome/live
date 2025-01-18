@@ -179,7 +179,7 @@ function openPopup(current_ticket, office_number) {
        // Clear the previous timeout if it exists
        if (timeoutId) {
         clearTimeout(timeoutId);
-        console.log("Popup closed");
+        console.log("Clear the previous timeout");
     }
 
     timeoutId = setTimeout(closePopup, 5000);
