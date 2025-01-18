@@ -56,6 +56,7 @@ client.on('connect', () => {
             logMessage('Subscription error: ' + err.message);
         } else {
             logMessage('Subscribed to topic: ' + topicSub);
+            publishMessage('load_page');
         }
     });
 });
@@ -74,8 +75,7 @@ client.on('error', (err) => {
 });
 
 // Publish a message
-function publishMessage() {
-    const msg = "hello bro";
+function publishMessage(msg) {
     if (msg) {
         client.publish(topicPub, msg, (err) => {
             if (err) {
